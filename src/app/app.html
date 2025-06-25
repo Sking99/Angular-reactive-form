@@ -5,8 +5,11 @@
     <div class="column">
       <div class="input-box">
         <input type="text" placeholder="First Name" formControlName="firstname" />
-        @if (reactiveForm.get('firstname')?.invalid && reactiveForm.get('firstname')?.touched) {
+        @if (reactiveForm.get('firstname')?.errors?.['required'] && reactiveForm.get('firstname')?.touched) {
           <small>*First Name is required</small>
+        }
+        @if (reactiveForm.get('firstname')?.errors?.['noSpaceAllowed'] && reactiveForm.get('firstname')?.touched) {
+          <small>*Space is not allowed</small>
         }
       </div>
       <div class="input-box">

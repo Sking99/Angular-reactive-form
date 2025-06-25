@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Form, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { count } from 'rxjs';
+import { noSpaceAllowed } from './Validators/noSpaceAllowed.validator';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class App {
   protected title = 'Angular-reactive-form';
 
   reactiveForm: FormGroup = new FormGroup({
-    firstname: new FormControl(null, [Validators.required]),
+    firstname: new FormControl(null, [Validators.required, noSpaceAllowed()]),
     lastname: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
     username: new FormControl(null),
